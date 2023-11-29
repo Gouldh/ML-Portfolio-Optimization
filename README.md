@@ -8,7 +8,7 @@ This project focuses on optimizing stock portfolios using various financial theo
 - **Machine Learning Strategies**: Employs various machine learning algorithms to forecast stock returns. It enhances the decision-making process by providing predictive insights based on historical data.
 - **Black-Litterman Model**: Integrates market equilibrium and machine learning predictions to adjust expected returns. This model refines the portfolio optimization process by incorporating predictions into objective market data.
 - **Portfolio Statistics**: Provides essential metrics such as the Sharpe Ratio, Sortino Ratio, and Information Ratio to evaluate the performance and risk-adjusted returns of investment portfolios.
-- **Factor Analysis** (Work in Progress): Examines how Fama-French factors like market risk, size, and value impact portfolio returns. This analysis is beneficial in understanding the driving forces behind portfolio performance.
+- **Factor Analysis** (WIP): Examines how Fama-French factors like market risk, size, and value impact portfolio returns. This analysis is beneficial in understanding the driving forces behind portfolio performance.
 
 ## Libraries
 - `pandas`: Essential for data manipulation and transformation. It is used to handle dataframes, perform data cleaning, and prepare datasets for analysis and visualization.
