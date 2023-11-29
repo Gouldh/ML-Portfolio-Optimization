@@ -1,6 +1,6 @@
 # Stock Portfolio Machine Learning Optimization
 
-## Description
+## Project Overview
 This project focuses on optimizing stock portfolios using various financial theories and machine learning models. It includes modules for factor analysis, mean-variance optimization, machine learning strategies for stock prediction, the Black-Litterman model for adjusting portfolio weights based on machine learning predictions, and portfolio statistics calculations. While rooted in the concepts established by my [Portfolio Analysis Suite](https://github.com/Gouldh/Portfolio-Analysis-Suite) project, this project stands on its own, offering unique functionalities and perspectives that distinguish it from its predecessor.
 
 ## Features
