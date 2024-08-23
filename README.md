@@ -35,35 +35,6 @@ To use the Portfolio Analysis Suite, follow these steps:
    pip install -r requirements.txt
    ```
 
-## Usage
-Here's a quick start guide to using the modules in this project:
-
-1. **Factor Analysis**:
-   ```python
-   import factor_analysis as fa
-   factor_data = fa.download_factor_data('start_date', 'end_date')
-   ```
-2. **Mean-Variance Optimization**:
-   ```python
-   import mean_variance_optimization as mv
-   optimized_weights = mv.mean_variance_optimization(tickers, 'start_date', 'end_date', max_volatility)
-   ```
-3. **Machine Learning Strategies**:
-   ```python
-   import machine_learning_strategies as mls
-   predicted_return, confidence = mls.generate_investor_views('ticker', 'start_date', 'end_date')
-   ```
-4. **Black-Litterman Model**:
-   ```python
-   import black_litterman_model as bl
-   adjusted_returns = bl.black_litterman_adjustment(market_returns, investor_views, view_confidences, historical_data)
-   ```
-5. **Portfolio Statistics**:
-   ```python
-   import portfolio_statistics as ps
-   sharpe_ratio = ps.sharpe_ratio(returns, risk_free_rate)
-   ```
-
 ## Sample Output
 Below is an example of the output produced by running the code with sample input parameters. The table shows the allocation percentages for each stock in the original Mean-Variance Optimization, as well as the Machine Learning-enhanced Mean-Variance Optimization. The Chart shows the performance of the three portfolios against the market representation (SPY) and provices metrics for each portfolio's performance.
 
