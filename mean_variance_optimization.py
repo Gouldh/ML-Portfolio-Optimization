@@ -39,7 +39,7 @@ def mean_variance_optimization(tickers, start_date, end_date, max_volatility, ex
     :param int simulations: number of Monte Carlo simulations
     :return: optimal weights for each ticker
     """
-    data = download_stock_data(tickers, start_date, end_date)['Adj Close']
+    data = download_stock_data(tickers, start_date, end_date)['Close']
     daily_returns = data.pct_change().dropna()
 
     if expected_returns is None:

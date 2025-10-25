@@ -18,7 +18,7 @@ def download_stock_data(tickers, start_date, end_date):
     :return: pandas Dataframe with stock data
     """
     data = yf.download(tickers, start=start_date, end=end_date, progress=False)
-    return data['Adj Close']
+    return data['Close']
 
 
 def create_additional_features(stock_data):
@@ -42,11 +42,11 @@ def prepare_data_for_ml(stock_data, lag_days=5):
     :return: pandas DataFrame with the original data and additional columns for each lagged feature
     """
     if isinstance(stock_data, pd.Series):
-        df = pd.DataFrame(stock_data, columns=['Adj Close'])
+        df = pd.DataFrame(stock_data, columns=['Close'])
     else:
         df = stock_data.copy()
 
-    target_column = 'Adj Close' if 'Adj Close' in df.columns else df.columns[0]
+    target_column = 'Close' if 'Close' in df.columns else df.columns[0]
 
     # Create lagged features based on the target column
     for i in range(1, lag_days + 1):
@@ -91,7 +91,7 @@ def predict_future_returns(model, stock_data):
     # Check if stock_data is a DataFrame and prepare it if so
     if isinstance(stock_data, pd.DataFrame):
         prepared_data = prepare_data_for_ml(stock_data)
-        features = prepared_data.drop('Adj Close', axis=1)
+        features = prepared_data.drop('Close', axis=1)
     else:
         # If stock_data is already a NumPy array, use it directly
         features = stock_data
@@ -120,8 +120,8 @@ def generate_investor_views(ticker, start_date, end_date, model_type='Linear Reg
     stock_data = download_stock_data(ticker, start_date, end_date)
     ml_stock_data_with_features = create_additional_features(stock_data)
 
-    X = ml_stock_data_with_features.drop('Adj Close', axis=1)
-    y = ml_stock_data_with_features['Adj Close']
+    X = ml_stock_data_with_features.drop(f'{ticker}', axis=1)
+    y = ml_stock_data_with_features[f'{ticker}']
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
     # Handle NaN values
