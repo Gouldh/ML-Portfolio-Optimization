@@ -23,7 +23,7 @@ def download_stock_data(tickers, start_date, end_date):
     :param str end_date: end date for download in form 'YYYY-MM-DD'
     :return: pandas Dataframe with stock data
     """
-    return yf.download(tickers, start_date, end_date, progress=False)
+    return yf.download(tickers, start_date, end_date, progress=False, auto_adjust=True)
 
 
 def mean_variance_optimization(tickers, start_date, end_date, max_volatility, expected_returns=None, min_weight=0.01, max_weight=0.35, simulations=10000):
@@ -39,7 +39,7 @@ def mean_variance_optimization(tickers, start_date, end_date, max_volatility, ex
     :param int simulations: number of Monte Carlo simulations
     :return: optimal weights for each ticker
     """
-    data = download_stock_data(tickers, start_date, end_date)['Adj Close']
+    data = download_stock_data(tickers, start_date, end_date)['Close']
     daily_returns = data.pct_change().dropna()
 
     if expected_returns is None:
