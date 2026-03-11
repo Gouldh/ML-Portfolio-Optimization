@@ -15,7 +15,7 @@ def black_litterman_adjustment(market_returns, investor_views, view_confidences,
     P = np.eye(num_assets)  # Proportion matrix
     Q = np.array(list(investor_views.values())).reshape(-1, 1)
 
-    cov_matrix = historical_data['Adj Close'].pct_change().dropna().cov()
+    cov_matrix = historical_data['Close'].pct_change().dropna().cov()
 
     # Ensure investor views and confidences are also arrays
     omega = np.diag([tau / confidence for confidence in view_confidences.values()])
