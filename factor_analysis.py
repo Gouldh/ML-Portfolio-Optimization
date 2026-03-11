@@ -34,12 +34,12 @@ def download_factor_data(start_date, end_date):
     for factor, tickers in factor_proxies.items():
         if isinstance(tickers, str):
             # Single ticker (e.g., for market)
-            data = yf.download(tickers, start=start_date, end=end_date, progress=False)['Adj Close'].pct_change()
+            data = yf.download(tickers, start=start_date, end=end_date, progress=False, auto_adjust=True)['Close'].pct_change()
             factor_data[factor] = data
         else:
             # Difference between two tickers (e.g., SMB, HML)
-            data1 = yf.download(tickers[0], start=start_date, end=end_date, progress=False)['Adj Close'].pct_change()
-            data2 = yf.download(tickers[1], start=start_date, end=end_date, progress=False)['Adj Close'].pct_change()
+            data1 = yf.download(tickers[0], start=start_date, end=end_date, progress=False, auto_adjust=True)['Close'].pct_change()
+            data2 = yf.download(tickers[1], start=start_date, end=end_date, progress=False, auto_adjust=True)['Close'].pct_change()
             factor_data[factor] = data1 - data2
 
     return factor_data.dropna()
@@ -57,7 +57,7 @@ def analyze_factor_impact(tickers, start_date, end_date):
     factor_data = download_factor_data(start_date, end_date)
 
     # Calculate daily returns for the stocks
-    stock_returns = stock_data['Adj Close'].pct_change().dropna()
+    stock_returns = stock_data['Close'].pct_change().dropna()
 
     # Merge stock returns with factor data
     merged_data = stock_returns.join(factor_data).dropna()
